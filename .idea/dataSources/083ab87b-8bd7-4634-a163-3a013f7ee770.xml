@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="ine5608@localhost">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.4">
+    <root id="1"/>
+    <database id="2" parent="1" name="ine5608">
+      <ObjectId>16386</ObjectId>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </database>
+    <database id="3" parent="1" name="postgres">
+      <ObjectId>12292</ObjectId>
+    </database>
+    <schema id="4" parent="2" name="public">
+      <ObjectId>2200</ObjectId>
+      <Current>1</Current>
+    </schema>
+    <schema id="5" parent="2" name="pg_catalog">
+      <ObjectId>11</ObjectId>
+    </schema>
+    <schema id="6" parent="2" name="pg_toast">
+      <ObjectId>99</ObjectId>
+    </schema>
+    <schema id="7" parent="2" name="pg_temp_1">
+      <ObjectId>11736</ObjectId>
+    </schema>
+    <schema id="8" parent="2" name="pg_toast_temp_1">
+      <ObjectId>11737</ObjectId>
+    </schema>
+    <schema id="9" parent="2" name="information_schema">
+      <ObjectId>12002</ObjectId>
+    </schema>
+    <schema id="10" parent="2" name="homechef">
+      <ObjectId>16387</ObjectId>
+      <IntrospectionTimestamp>2018-03-31.17:50:29.421</IntrospectionTimestamp>
+      <IntrospectionStateNumber>591</IntrospectionStateNumber>
+      <Visible>1</Visible>
+    </schema>
+    <sequence id="11" parent="10" name="en_dificuldade_id_dificuldade_seq">
+      <ObjectId>16483</ObjectId>
+      <StateNumber>583</StateNumber>
+    </sequence>
+    <sequence id="12" parent="10" name="en_ingrediente_id_ingrediente_seq">
+      <ObjectId>16400</ObjectId>
+      <StateNumber>568</StateNumber>
+    </sequence>
+    <sequence id="13" parent="10" name="en_ingrediente_receita_id_ingrediente_receita_seq">
+      <ObjectId>16457</ObjectId>
+      <StateNumber>579</StateNumber>
+    </sequence>
+    <sequence id="14" parent="10" name="en_item_estoque_id_item_estoque_seq">
+      <ObjectId>16391</ObjectId>
+      <StateNumber>565</StateNumber>
+    </sequence>
+    <sequence id="15" parent="10" name="en_receita_id_receita_seq">
+      <ObjectId>16474</ObjectId>
+      <StateNumber>582</StateNumber>
+    </sequence>
+    <sequence id="16" parent="10" name="en_unidade_id_unidade_seq">
+      <ObjectId>16417</ObjectId>
+      <StateNumber>571</StateNumber>
+    </sequence>
+    <table id="17" parent="10" name="en_dificuldade">
+      <ObjectId>16485</ObjectId>
+      <StateNumber>585</StateNumber>
+    </table>
+    <table id="18" parent="10" name="en_ingrediente">
+      <ObjectId>16402</ObjectId>
+      <StateNumber>589</StateNumber>
+    </table>
+    <table id="19" parent="10" name="en_item_estoque">
+      <ObjectId>16388</ObjectId>
+      <StateNumber>575</StateNumber>
+    </table>
+    <table id="20" parent="10" name="en_receita">
+      <ObjectId>16476</ObjectId>
+      <StateNumber>591</StateNumber>
+    </table>
+    <table id="21" parent="10" name="en_unidade">
+      <ObjectId>16419</ObjectId>
+      <StateNumber>578</StateNumber>
+    </table>
+    <table id="22" parent="10" name="re_ingrediente_receita">
+      <ObjectId>16459</ObjectId>
+      <StateNumber>591</StateNumber>
+    </table>
+    <table id="23" parent="10" name="re_unidade_unidade">
+      <ObjectId>16439</ObjectId>
+      <StateNumber>578</StateNumber>
+    </table>
+    <column id="24" parent="17" name="id_dificuldade">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>583</StateNumber>
+      <SequenceName>homechef.en_dificuldade_id_dificuldade_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;homechef.en_dificuldade_id_dificuldade_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="25" parent="17" name="nome">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>583</StateNumber>
+    </column>
+    <index id="26" parent="17" name="en_dificuldade_id_dificuldade_uindex">
+      <ObjectId>16494</ObjectId>
+      <ColNames>id_dificuldade</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="27" parent="17" name="en_dificuldade_pkey">
+      <ObjectId>16492</ObjectId>
+      <ColNames>id_dificuldade</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="28" parent="17" name="en_dificuldade_pkey">
+      <ObjectId>16493</ObjectId>
+      <ColNames>id_dificuldade</ColNames>
+      <UnderlyingIndexName>en_dificuldade_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="29" parent="18" name="id_ingrediente">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>568</StateNumber>
+      <SequenceName>homechef.en_ingrediente_id_ingrediente_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;homechef.en_ingrediente_id_ingrediente_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="30" parent="18" name="nome">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>568</StateNumber>
+    </column>
+    <column id="31" parent="18" name="preco">
+      <Position>3</Position>
+      <DataType>numeric|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>568</StateNumber>
+    </column>
+    <column id="32" parent="18" name="id_unidade">
+      <Position>4</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>568</StateNumber>
+    </column>
+    <index id="33" parent="18" name="en_ingrediente_id_ingrediente_uindex">
+      <ObjectId>16411</ObjectId>
+      <ColNames>id_ingrediente</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="34" parent="18" name="en_ingrediente_pkey">
+      <ObjectId>16409</ObjectId>
+      <ColNames>id_ingrediente</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="35" parent="18" name="en_ingrediente_pkey">
+      <ObjectId>16410</ObjectId>
+      <ColNames>id_ingrediente</ColNames>
+      <UnderlyingIndexName>en_ingrediente_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="36" parent="18" name="en_ingrediente_en_unidade_id_unidade_fk">
+      <ObjectId>16429</ObjectId>
+      <ColNames>id_unidade</ColNames>
+      <RefTableId>16419</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>en_unidade</RefTableName>
+      <RefKeyName>en_unidade_pkey</RefKeyName>
+      <RefColNames>id_unidade</RefColNames>
+    </foreign-key>
+    <column id="37" parent="19" name="quantidade">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>562</StateNumber>
+    </column>
+    <column id="38" parent="19" name="validade">
+      <Position>2</Position>
+      <DataType>date|0</DataType>
+      <StateNumber>563</StateNumber>
+    </column>
+    <column id="39" parent="19" name="id_ingrediente">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>564</StateNumber>
+    </column>
+    <column id="40" parent="19" name="id_item_estoque">
+      <Position>4</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>565</StateNumber>
+      <SequenceName>homechef.en_item_estoque_id_item_estoque_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;homechef.en_item_estoque_id_item_estoque_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="41" parent="19" name="id_unidade">
+      <Position>5</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>574</StateNumber>
+    </column>
+    <index id="42" parent="19" name="en_item_estoque_id_item_estoque_pk">
+      <ObjectId>16398</ObjectId>
+      <ColNames>id_item_estoque</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="43" parent="19" name="en_item_estoque_id_item_estoque_uindex">
+      <ObjectId>16397</ObjectId>
+      <ColNames>id_item_estoque</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="44" parent="19" name="en_item_estoque_id_item_estoque_pk">
+      <ObjectId>16399</ObjectId>
+      <ColNames>id_item_estoque</ColNames>
+      <UnderlyingIndexName>en_item_estoque_id_item_estoque_pk</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="45" parent="19" name="en_item_estoque_en_ingrediente_id_ingrediente_fk">
+      <ObjectId>16412</ObjectId>
+      <ColNames>id_ingrediente</ColNames>
+      <RefTableId>16402</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>en_ingrediente</RefTableName>
+      <RefKeyName>en_ingrediente_pkey</RefKeyName>
+      <RefColNames>id_ingrediente</RefColNames>
+    </foreign-key>
+    <foreign-key id="46" parent="19" name="en_item_estoque_en_unidade_id_unidade_fk">
+      <ObjectId>16434</ObjectId>
+      <ColNames>id_unidade</ColNames>
+      <RefTableId>16419</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>en_unidade</RefTableName>
+      <RefKeyName>en_unidade_pkey</RefKeyName>
+      <RefColNames>id_unidade</RefColNames>
+    </foreign-key>
+    <column id="47" parent="20" name="id_receita">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>582</StateNumber>
+      <SequenceName>homechef.en_receita_id_receita_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;homechef.en_receita_id_receita_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="48" parent="20" name="id_dificuldade">
+      <Position>2</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>582</StateNumber>
+    </column>
+    <column id="49" parent="20" name="modo_preparo">
+      <Position>3</Position>
+      <DataType>text|0</DataType>
+      <StateNumber>582</StateNumber>
+    </column>
+    <column id="50" parent="20" name="nome">
+      <Position>4</Position>
+      <DataType>text|0</DataType>
+      <StateNumber>582</StateNumber>
+    </column>
+    <column id="51" parent="20" name="tempo">
+      <Position>5</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>582</StateNumber>
+    </column>
+    <index id="52" parent="20" name="en_receita_id_receita_pk">
+      <ObjectId>16501</ObjectId>
+      <ColNames>id_receita</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="53" parent="20" name="en_receita_id_receita_uindex">
+      <ObjectId>16500</ObjectId>
+      <ColNames>id_receita</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="54" parent="20" name="en_receita_id_receita_pk">
+      <ObjectId>16502</ObjectId>
+      <ColNames>id_receita</ColNames>
+      <UnderlyingIndexName>en_receita_id_receita_pk</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="55" parent="20" name="en_receita_en_dificuldade_id_dificuldade_fk">
+      <ObjectId>16495</ObjectId>
+      <ColNames>id_dificuldade</ColNames>
+      <RefTableId>16485</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>en_dificuldade</RefTableName>
+      <RefKeyName>en_dificuldade_pkey</RefKeyName>
+      <RefColNames>id_dificuldade</RefColNames>
+    </foreign-key>
+    <column id="56" parent="21" name="id_unidade">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>571</StateNumber>
+      <SequenceName>homechef.en_unidade_id_unidade_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;homechef.en_unidade_id_unidade_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="57" parent="21" name="nome_plural">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>571</StateNumber>
+    </column>
+    <column id="58" parent="21" name="nome_singular">
+      <Position>3</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>571</StateNumber>
+    </column>
+    <column id="59" parent="21" name="unidade">
+      <Position>4</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>571</StateNumber>
+    </column>
+    <index id="60" parent="21" name="en_unidade_id_unidade_uindex">
+      <ObjectId>16428</ObjectId>
+      <ColNames>id_unidade</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="61" parent="21" name="en_unidade_pkey">
+      <ObjectId>16426</ObjectId>
+      <ColNames>id_unidade</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="62" parent="21" name="en_unidade_pkey">
+      <ObjectId>16427</ObjectId>
+      <ColNames>id_unidade</ColNames>
+      <UnderlyingIndexName>en_unidade_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="63" parent="22" name="id_ingrediente_receita">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>579</StateNumber>
+      <SequenceName>homechef.en_ingrediente_receita_id_ingrediente_receita_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;homechef.en_ingrediente_receita_id_ingrediente_receita_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="64" parent="22" name="id_ingrediente">
+      <Position>2</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>579</StateNumber>
+    </column>
+    <column id="65" parent="22" name="id_receita">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>579</StateNumber>
+    </column>
+    <column id="66" parent="22" name="quantidade">
+      <Position>4</Position>
+      <DataType>numeric|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>579</StateNumber>
+    </column>
+    <index id="67" parent="22" name="en_ingrediente_receita_id_ingrediente_receita_uindex">
+      <ObjectId>16473</ObjectId>
+      <ColNames>id_ingrediente_receita</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="68" parent="22" name="en_ingrediente_receita_pkey">
+      <ObjectId>16466</ObjectId>
+      <ColNames>id_ingrediente_receita</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="69" parent="22" name="en_ingrediente_receita_pkey">
+      <ObjectId>16467</ObjectId>
+      <ColNames>id_ingrediente_receita</ColNames>
+      <UnderlyingIndexName>en_ingrediente_receita_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="70" parent="22" name="en_ingrediente_receita_en_ingrediente_id_ingrediente_fk">
+      <ObjectId>16503</ObjectId>
+      <ColNames>id_ingrediente</ColNames>
+      <RefTableId>16402</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>en_ingrediente</RefTableName>
+      <RefKeyName>en_ingrediente_pkey</RefKeyName>
+      <RefColNames>id_ingrediente</RefColNames>
+    </foreign-key>
+    <foreign-key id="71" parent="22" name="re_ingrediente_receita_en_receita_id_receita_fk">
+      <ObjectId>16508</ObjectId>
+      <ColNames>id_receita</ColNames>
+      <RefTableId>16476</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>en_receita</RefTableName>
+      <RefKeyName>en_receita_id_receita_pk</RefKeyName>
+      <RefColNames>id_receita</RefColNames>
+    </foreign-key>
+    <column id="72" parent="23" name="id_unidade_origem">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>576</StateNumber>
+    </column>
+    <column id="73" parent="23" name="id_unidade_destino">
+      <Position>2</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>576</StateNumber>
+    </column>
+    <column id="74" parent="23" name="multiplicador">
+      <Position>3</Position>
+      <DataType>numeric|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>576</StateNumber>
+    </column>
+    <index id="75" parent="23" name="re_unidade_unidade_pkey">
+      <ObjectId>16445</ObjectId>
+      <ColNames>id_unidade_origem
+id_unidade_destino</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="76" parent="23" name="re_unidade_unidade_pkey">
+      <ObjectId>16446</ObjectId>
+      <ColNames>id_unidade_origem
+id_unidade_destino</ColNames>
+      <UnderlyingIndexName>re_unidade_unidade_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="77" parent="23" name="re_unidade_unidade_en_unidade_id_unidade_fk">
+      <ObjectId>16447</ObjectId>
+      <ColNames>id_unidade_origem</ColNames>
+      <RefTableId>16419</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>en_unidade</RefTableName>
+      <RefKeyName>en_unidade_pkey</RefKeyName>
+      <RefColNames>id_unidade</RefColNames>
+    </foreign-key>
+    <foreign-key id="78" parent="23" name="re_unidade_unidade_en_unidade_id_unidade_destino_fk">
+      <ObjectId>16452</ObjectId>
+      <ColNames>id_unidade_destino</ColNames>
+      <RefTableId>16419</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>en_unidade</RefTableName>
+      <RefKeyName>en_unidade_pkey</RefKeyName>
+      <RefColNames>id_unidade</RefColNames>
+    </foreign-key>
+  </database-model>
+</dataSource>
