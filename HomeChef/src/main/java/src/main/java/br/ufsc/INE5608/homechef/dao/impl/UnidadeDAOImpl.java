@@ -1,6 +1,7 @@
 package src.main.java.br.ufsc.INE5608.homechef.dao.impl;
 
 import org.jooq.DSLContext;
+import src.main.java.br.ufsc.INE5608.homechef.connection.Connection;
 import src.main.java.br.ufsc.INE5608.homechef.dao.UnidadeDAO;
 import src.main.java.br.ufsc.INE5608.homechef.model.Unidade;
 
@@ -10,10 +11,18 @@ import static br.ufsc.INE5608.homechef.Tables.EN_UNIDADE;
 
 public class UnidadeDAOImpl implements UnidadeDAO {
 
+    private static UnidadeDAOImpl mInstance;
     private DSLContext dslContext;
 
-    public UnidadeDAOImpl(DSLContext dslContext) {
-        this.dslContext = dslContext;
+    private UnidadeDAOImpl() {
+        dslContext = Connection.getInstance().getDslContext();
+    }
+
+    public static UnidadeDAOImpl getInstance() {
+        if (mInstance == null) {
+            mInstance = new UnidadeDAOImpl();
+        }
+        return mInstance;
     }
 
     public Integer insert(Unidade unidade) {

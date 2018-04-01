@@ -5,6 +5,8 @@
  */
 package src.main.java.br.ufsc.INE5608.homechef.view;
 
+import javax.swing.*;
+
 /**
  *
  * @author Gabriel
@@ -28,7 +30,7 @@ public class ListarIngredientes extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaIngredientes = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -37,7 +39,7 @@ public class ListarIngredientes extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaIngredientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"Leite", "Litro", "R$1,95"},
                 {"Pão", "Unidade", "R$0,20"},
@@ -47,9 +49,9 @@ public class ListarIngredientes extends javax.swing.JFrame {
                 "Nome", "Unidade", "Preço"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
+        jScrollPane1.setViewportView(tabelaIngredientes);
+        if (tabelaIngredientes.getColumnModel().getColumnCount() > 0) {
+            tabelaIngredientes.getColumnModel().getColumn(2).setResizable(false);
         }
 
         jLabel1.setText("Ingredientes:");
@@ -148,6 +150,16 @@ public class ListarIngredientes extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabelaIngredientes;
     // End of variables declaration//GEN-END:variables
+
+
+    public JTable getTabelaIngredientes() {
+        return tabelaIngredientes;
+    }
+
+    public ListarIngredientes setTabelaIngredientes(JTable tabelaIngredientes) {
+        this.tabelaIngredientes = tabelaIngredientes;
+        return this;
+    }
 }
