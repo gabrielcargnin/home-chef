@@ -5,16 +5,13 @@
  */
 package src.main.java.br.ufsc.INE5608.homechef;
 
-import org.jooq.DSLContext;
-import org.jooq.SQLDialect;
-import org.jooq.impl.DSL;
-import src.main.java.br.ufsc.INE5608.homechef.dao.UnidadeDAO;
-import src.main.java.br.ufsc.INE5608.homechef.dao.impl.UnidadeDAOImpl;
+import src.main.java.br.ufsc.INE5608.homechef.model.Ingrediente;
+import src.main.java.br.ufsc.INE5608.homechef.model.ListarIngredientesTableModel;
+import src.main.java.br.ufsc.INE5608.homechef.service.IngredienteService;
+import src.main.java.br.ufsc.INE5608.homechef.service.impl.IngredienteServiceImpl;
+import src.main.java.br.ufsc.INE5608.homechef.view.ListarIngredientes;
 
-import java.sql.DriverManager;
-import java.sql.SQLException;
-
-import static src.main.java.br.ufsc.INE5608.homechef.constants.Config.URL_CONEXAO;
+import java.util.Collection;
 
 /**
  * @author Gabriel
@@ -25,13 +22,9 @@ public class HomeChef {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        try {
-            DSLContext dslContext = DSL.using(DriverManager.getConnection(URL_CONEXAO), SQLDialect.POSTGRES);
-            UnidadeDAO unidadeDAO = new UnidadeDAOImpl(dslContext);
-            System.out.println(unidadeDAO.findById(2).toString());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        IngredienteService ingredienteService = new IngredienteServiceImpl();
+        Collection<Ingrediente> ingredientes = ingredienteService.list();
+        ListarIngredientes listarIngredientes = new ListarIngredientes();
+        ListarIngredientesTableModel listarIngredientesTableModel = new ListarIngredientesTableModel(ingredientes);
     }
-
 }
