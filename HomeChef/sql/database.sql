@@ -14,12 +14,14 @@ CREATE UNIQUE INDEX en_item_estoque_id_item_estoque_uindex
 
 CREATE TABLE en_ingrediente
 (
-  id_ingrediente SERIAL  NOT NULL
+  id_ingrediente   SERIAL  NOT NULL
     CONSTRAINT en_ingrediente_pkey
     PRIMARY KEY,
-  nome           TEXT    NOT NULL,
-  preco          NUMERIC NOT NULL,
-  id_unidade     INTEGER
+  nome             TEXT    NOT NULL,
+  preco            NUMERIC NOT NULL,
+  id_unidade       INTEGER,
+  quantidade_preco INTEGER,
+  id_unidade_preco INTEGER
 );
 
 CREATE UNIQUE INDEX en_ingrediente_id_ingrediente_uindex
@@ -50,6 +52,10 @@ ALTER TABLE en_ingrediente
   ADD CONSTRAINT en_ingrediente_en_unidade_id_unidade_fk
 FOREIGN KEY (id_unidade) REFERENCES en_unidade;
 
+ALTER TABLE en_ingrediente
+  ADD CONSTRAINT en_ingrediente_en_unidade_id_unidade_preco_fk
+FOREIGN KEY (id_unidade_preco) REFERENCES en_unidade;
+
 CREATE TABLE re_unidade_unidade
 (
   id_unidade_origem  INTEGER NOT NULL
@@ -70,7 +76,7 @@ CREATE TABLE re_ingrediente_receita
     PRIMARY KEY,
   id_ingrediente         INTEGER NOT NULL
     CONSTRAINT en_ingrediente_receita_en_ingrediente_id_ingrediente_fk
-    REFERENCES en_ingrediente,
+    REFERENCES null (),
   id_receita             INTEGER NOT NULL,
   quantidade             NUMERIC NOT NULL
 );
@@ -83,7 +89,9 @@ CREATE TABLE en_receita
   id_receita     SERIAL  NOT NULL
     CONSTRAINT en_receita_id_receita_pk
     PRIMARY KEY,
-  id_dificuldade INTEGER NOT NULL,
+  id_dificuldade INTEGER NOT NULL
+    CONSTRAINT en_receita_en_dificuldade_id_dificuldade_fk
+    REFERENCES null (),
   modo_preparo   TEXT,
   nome           TEXT,
   tempo          INTEGER NOT NULL
@@ -107,6 +115,3 @@ CREATE TABLE en_dificuldade
 CREATE UNIQUE INDEX en_dificuldade_id_dificuldade_uindex
   ON en_dificuldade (id_dificuldade);
 
-ALTER TABLE en_receita
-  ADD CONSTRAINT en_receita_en_dificuldade_id_dificuldade_fk
-FOREIGN KEY (id_dificuldade) REFERENCES en_dificuldade;
