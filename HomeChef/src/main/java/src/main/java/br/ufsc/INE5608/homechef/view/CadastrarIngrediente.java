@@ -5,8 +5,16 @@
  */
 package src.main.java.br.ufsc.INE5608.homechef.view;
 
+import src.main.java.br.ufsc.INE5608.homechef.controller.ControladorIngrediente;
+import src.main.java.br.ufsc.INE5608.homechef.dto.IngredienteDTO;
+import src.main.java.br.ufsc.INE5608.homechef.filter.DoubleFilter;
+import src.main.java.br.ufsc.INE5608.homechef.filter.IntegerFilter;
+
+import javax.swing.*;
+import javax.swing.text.PlainDocument;
+import java.util.Enumeration;
+
 /**
- *
  * @author Gabriel
  */
 public class CadastrarIngrediente extends javax.swing.JFrame {
@@ -27,60 +35,76 @@ public class CadastrarIngrediente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        radioGroup = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jRadioButton5 = new javax.swing.JRadioButton();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jRadioButton4 = new javax.swing.JRadioButton();
+        ingredienteLabel = new javax.swing.JLabel();
+        ingredienteTextField = new javax.swing.JTextField();
+        unidadeLabel = new javax.swing.JLabel();
+        gramaRadio = new javax.swing.JRadioButton();
+        quilogramaRadio = new javax.swing.JRadioButton();
+        mililitroRadio = new javax.swing.JRadioButton();
+        cancelaBtn = new javax.swing.JButton();
+        salvaBtn = new javax.swing.JButton();
+        litroRadio = new javax.swing.JRadioButton();
+        precoLabel = new javax.swing.JLabel();
+        unidadeRadio = new javax.swing.JRadioButton();
+        quantidadeLabel = new javax.swing.JLabel();
+        quantidadeTextField = new javax.swing.JTextField();
+        idLabel = new javax.swing.JLabel();
+        idTextField = new javax.swing.JTextField();
+        precoTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Ingrediente:");
+        ingredienteLabel.setText("Ingrediente:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        unidadeLabel.setText("Unidade:");
+
+        radioGroup.add(gramaRadio);
+        gramaRadio.setMnemonic('k');
+        gramaRadio.setText("Grama");
+
+        radioGroup.add(quilogramaRadio);
+        quilogramaRadio.setText("Quilograma");
+
+        radioGroup.add(mililitroRadio);
+        mililitroRadio.setText("Mililitro");
+
+        cancelaBtn.setText("Cancela");
+        cancelaBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                cancelaBtnActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("Unidade:");
-
-        jRadioButton1.setText("Grama");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        salvaBtn.setText("Salva");
+        salvaBtn.setMaximumSize(new java.awt.Dimension(71, 23));
+        salvaBtn.setMinimumSize(new java.awt.Dimension(71, 23));
+        salvaBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                salvaBtnActionPerformed(evt);
             }
         });
 
-        jRadioButton2.setText("Quilograma");
+        radioGroup.add(litroRadio);
+        litroRadio.setText("Litro");
 
-        jRadioButton3.setText("Mililitro");
+        precoLabel.setText("Preço:");
 
-        jButton1.setText("Cancela");
+        radioGroup.add(unidadeRadio);
+        unidadeRadio.setText("Unidade");
 
-        jButton2.setText("Salva");
-        jButton2.setMaximumSize(new java.awt.Dimension(71, 23));
-        jButton2.setMinimumSize(new java.awt.Dimension(71, 23));
+        quantidadeLabel.setText("Quantidade:");
 
-        jRadioButton5.setText("Litro");
+        PlainDocument documentQuantidade = (PlainDocument) quantidadeTextField.getDocument();
+        documentQuantidade.setDocumentFilter(new IntegerFilter());
 
-        jLabel3.setText("Preço:");
+        idLabel.setText("Id:");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
+        idTextField.setEditable(false);
 
-        jRadioButton4.setText("Unidade");
+        PlainDocument documentPreco = (PlainDocument) precoTextField.getDocument();
+        documentPreco.setDocumentFilter(new DoubleFilter());
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -88,60 +112,78 @@ public class CadastrarIngrediente extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(salvaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(cancelaBtn)
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(59, 59, 59)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(quantidadeLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(quantidadeTextField))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(unidadeLabel)
+                                    .addComponent(precoLabel))
+                                .addGap(35, 35, 35)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(gramaRadio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(precoTextField))))
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(quilogramaRadio)
+                        .addGap(18, 18, 18)
+                        .addComponent(litroRadio)
+                        .addGap(18, 18, 18)
+                        .addComponent(mililitroRadio)
+                        .addGap(18, 18, 18)
+                        .addComponent(unidadeRadio))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(35, 35, 35)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField2))
+                            .addComponent(ingredienteLabel)
+                            .addComponent(idLabel))
                         .addGap(18, 18, 18)
-                        .addComponent(jRadioButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButton5)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButton3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButton4)))
-                .addContainerGap(40, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ingredienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(idTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(19, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
+                    .addComponent(idLabel)
+                    .addComponent(idTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ingredienteLabel)
+                    .addComponent(ingredienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jRadioButton3)
-                        .addComponent(jRadioButton4))
+                        .addComponent(mililitroRadio)
+                        .addComponent(unidadeRadio))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(jRadioButton1)
-                        .addComponent(jRadioButton2)
-                        .addComponent(jRadioButton5)))
+                        .addComponent(unidadeLabel)
+                        .addComponent(gramaRadio)
+                        .addComponent(quilogramaRadio)
+                        .addComponent(litroRadio)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(precoLabel)
+                    .addComponent(precoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(quantidadeLabel)
+                    .addComponent(quantidadeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cancelaBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(salvaBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -149,87 +191,109 @@ public class CadastrarIngrediente extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 576, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 26, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 27, Short.MAX_VALUE)))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 205, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 35, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 35, Short.MAX_VALUE)))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+    private void salvaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvaBtnActionPerformed
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastrarIngrediente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastrarIngrediente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastrarIngrediente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastrarIngrediente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            ControladorIngrediente.getInstance().salva(montaIngrediente());
+            JOptionPane.showMessageDialog(null, "Ingrediente salvo!");
+            setVisible(false);
+            limpaTela();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
         }
-        //</editor-fold>
-        //</editor-fold>
+    }//GEN-LAST:event_salvaBtnActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CadastrarIngrediente().setVisible(true);
+    private void cancelaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelaBtnActionPerformed
+        setVisible(false);
+        limpaTela();
+    }//GEN-LAST:event_cancelaBtnActionPerformed
+
+    public void abreInclusao() {
+        idLabel.setVisible(false);
+        idTextField.setVisible(false);
+        setVisible(true);
+    }
+
+    public void abreAlteracao(IngredienteDTO ingredienteDTO) {
+        idLabel.setVisible(true);
+        idTextField.setVisible(true);
+        idTextField.setText(ingredienteDTO.getIdIngrediente());
+        ingredienteTextField.setText(ingredienteDTO.getNome());
+        setUnidade(ingredienteDTO.getUnidade());
+        precoTextField.setText(ingredienteDTO.getPreco());
+        quantidadeTextField.setText(ingredienteDTO.getQuantidadePreco());
+        setVisible(true);
+    }
+
+    private IngredienteDTO montaIngrediente() {
+        return new IngredienteDTO()
+                .setIdIngrediente(idTextField.getText())
+                .setNome(ingredienteTextField.getText())
+                .setPreco(precoTextField.getText())
+                .setQuantidadePreco(quantidadeTextField.getText())
+                .setUnidade(getUnidadeSelecionada())
+                .setUnidadePreco(getUnidadeSelecionada());
+    }
+
+    private String getUnidadeSelecionada() {
+        Enumeration<AbstractButton> elements = radioGroup.getElements();
+        String unidadeSelecionada = null;
+        while (elements.hasMoreElements()) {
+            AbstractButton abstractButton = elements.nextElement();
+            if (abstractButton.isSelected()) {
+                return abstractButton.getText();
             }
-        });
+        }
+        return null;
+    }
+
+    private void setUnidade(String nomeUnidade) {
+        Enumeration<AbstractButton> elements = radioGroup.getElements();
+        String unidadeSelecionada = null;
+        while (elements.hasMoreElements()) {
+            AbstractButton abstractButton = elements.nextElement();
+            if (abstractButton.getText().equals(nomeUnidade)) {
+                abstractButton.setSelected(true);
+            }
+        }
+    }
+
+    private void limpaTela() {
+        idTextField.setText("");
+        quantidadeTextField.setText("");
+        ingredienteTextField.setText("");
+        precoTextField.setText("");
+        radioGroup.clearSelection();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton cancelaBtn;
+    private javax.swing.JRadioButton gramaRadio;
+    private javax.swing.JLabel idLabel;
+    private javax.swing.JTextField idTextField;
+    private javax.swing.JLabel ingredienteLabel;
+    private javax.swing.JTextField ingredienteTextField;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JRadioButton litroRadio;
+    private javax.swing.JRadioButton mililitroRadio;
+    private javax.swing.JLabel precoLabel;
+    private javax.swing.JTextField precoTextField;
+    private javax.swing.JLabel quantidadeLabel;
+    private javax.swing.JTextField quantidadeTextField;
+    private javax.swing.JRadioButton quilogramaRadio;
+    private javax.swing.ButtonGroup radioGroup;
+    private javax.swing.JButton salvaBtn;
+    private javax.swing.JLabel unidadeLabel;
+    private javax.swing.JRadioButton unidadeRadio;
     // End of variables declaration//GEN-END:variables
 }

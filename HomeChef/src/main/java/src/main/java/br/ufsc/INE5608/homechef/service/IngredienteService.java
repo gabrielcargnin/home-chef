@@ -13,4 +13,6 @@ public interface IngredienteService {
     Ingrediente findById(Integer idIngrediente);
 
     Ingrediente update(Ingrediente ingrediente);
+
+    void delete(Integer idIngrediente);
 }

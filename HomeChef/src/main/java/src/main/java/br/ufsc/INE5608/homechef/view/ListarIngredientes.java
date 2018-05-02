@@ -5,7 +5,11 @@
  */
 package src.main.java.br.ufsc.INE5608.homechef.view;
 
+import src.main.java.br.ufsc.INE5608.homechef.controller.ControladorIngrediente;
+import src.main.java.br.ufsc.INE5608.homechef.dto.IngredienteDTO;
+
 import javax.swing.*;
+import java.util.Collection;
 
 /**
  *
@@ -30,39 +34,45 @@ public class ListarIngredientes extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaIngredientes = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        ingredienteTable = new javax.swing.JTable();
+        ingredienteLabel = new javax.swing.JLabel();
+        incluiBtn = new javax.swing.JButton();
+        alteraBtn = new javax.swing.JButton();
+        excluiBtn = new javax.swing.JButton();
+        fecharBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        tabelaIngredientes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"Leite", "Litro", "R$1,95"},
-                {"Pão", "Unidade", "R$0,20"},
-                {"Manteiga", "Gramas", "R$4,10"}
-            },
-            new String [] {
-                "Nome", "Unidade", "Preço"
-            }
-        ));
-        jScrollPane1.setViewportView(tabelaIngredientes);
-        if (tabelaIngredientes.getColumnModel().getColumnCount() > 0) {
-            tabelaIngredientes.getColumnModel().getColumn(2).setResizable(false);
+        ingredienteTable.setModel(new IngredienteTableModel());
+        jScrollPane1.setViewportView(ingredienteTable);
+        if (ingredienteTable.getColumnModel().getColumnCount() > 0) {
+            ingredienteTable.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        jLabel1.setText("Ingredientes:");
+        ingredienteLabel.setText("Ingredientes:");
 
-        jButton1.setText("Inclui");
+        incluiBtn.setText("Inclui");
+        incluiBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                incluiBtnActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Altera");
+        alteraBtn.setText("Altera");
+        alteraBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alteraBtnActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Exclui");
+        excluiBtn.setText("Exclui");
+        excluiBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excluiBtnActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Fechar");
+        fecharBtn.setText("Fechar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -72,18 +82,17 @@ public class ListarIngredientes extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton4)
+                        .addComponent(fecharBtn)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(ingredienteLabel)
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(excluiBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(alteraBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(incluiBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(41, 41, 41))))
         );
         layout.setVerticalGroup(
@@ -91,75 +100,71 @@ public class ListarIngredientes extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(ingredienteLabel)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(incluiBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2)
+                        .addComponent(alteraBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3)))
+                        .addComponent(excluiBtn)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addComponent(jButton4)
+                .addComponent(fecharBtn)
                 .addContainerGap())
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListarIngredientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListarIngredientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListarIngredientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListarIngredientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
+    private void incluiBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_incluiBtnActionPerformed
+        ControladorIngrediente.getInstance().abreInclusao();
+    }//GEN-LAST:event_incluiBtnActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ListarIngredientes().setVisible(true);
+    private void excluiBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluiBtnActionPerformed
+        IngredienteTableModel model = (IngredienteTableModel) ingredienteTable.getModel();
+        int selectedRow = ingredienteTable.getSelectedRow();
+        if (selectedRow > -1) {
+            IngredienteDTO selecionado = model.getValueAt(selectedRow);
+            try {
+                ControladorIngrediente.getInstance().exclui(selecionado);
+                JOptionPane.showMessageDialog(null, "Ingrediente removido!");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage());
             }
-        });
+        }
+    }//GEN-LAST:event_excluiBtnActionPerformed
+
+    private void alteraBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alteraBtnActionPerformed
+        IngredienteTableModel model = (IngredienteTableModel) ingredienteTable.getModel();
+        IngredienteDTO selecionado = model.getValueAt(ingredienteTable.getSelectedRow());
+        ControladorIngrediente.getInstance().abreAlteracao(selecionado);
+    }//GEN-LAST:event_alteraBtnActionPerformed
+
+    public void setaIntegredientesTable(Collection<IngredienteDTO> ingredientes) {
+        removeLinhas();
+        IngredienteTableModel model = (IngredienteTableModel) ingredienteTable.getModel();
+        ingredientes.forEach(
+                model::addIngredienteDTO
+        );
+    }
+
+    private void removeLinhas() {
+        IngredienteTableModel model = (IngredienteTableModel) ingredienteTable.getModel();
+        int linhas = model.getRowCount();
+        for (int i = linhas - 1; i >= 0; i--) {
+            model.removeIngredienteDTO(i);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton alteraBtn;
+    private javax.swing.JButton excluiBtn;
+    private javax.swing.JButton fecharBtn;
+    private javax.swing.JButton incluiBtn;
+    private javax.swing.JLabel ingredienteLabel;
+    private javax.swing.JTable ingredienteTable;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabelaIngredientes;
     // End of variables declaration//GEN-END:variables
 
-
-    public JTable getTabelaIngredientes() {
-        return tabelaIngredientes;
-    }
-
-    public ListarIngredientes setTabelaIngredientes(JTable tabelaIngredientes) {
-        this.tabelaIngredientes = tabelaIngredientes;
-        return this;
-    }
 }

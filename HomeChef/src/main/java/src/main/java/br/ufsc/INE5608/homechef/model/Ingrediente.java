@@ -6,6 +6,8 @@ public class Ingrediente {
     protected String nome;
     protected Double preco;
     protected Unidade unidade;
+    protected Unidade unidadePreco;
+    protected Integer quantidadePreco;
 
     public Integer getIdIngrediente() {
         return idIngrediente;
@@ -43,4 +45,33 @@ public class Ingrediente {
         return this;
     }
 
+    public Unidade getUnidadePreco() {
+        return unidadePreco;
+    }
+
+    public Ingrediente setUnidadePreco(Unidade unidadePreco) {
+        this.unidadePreco = unidadePreco;
+        return this;
+    }
+
+    public Integer getQuantidadePreco() {
+        return quantidadePreco;
+    }
+
+    public Ingrediente setQuantidadePreco(Integer quantidadePreco) {
+        this.quantidadePreco = quantidadePreco;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "Ingrediente{" +
+                "idIngrediente=" + idIngrediente +
+                ", nome='" + nome + '\'' +
+                ", preco=" + preco +
+                ", unidade=" + unidade +
+                ", unidadePreco=" + unidadePreco +
+                ", quantidadePreco=" + quantidadePreco +
+                '}';
+    }
 }

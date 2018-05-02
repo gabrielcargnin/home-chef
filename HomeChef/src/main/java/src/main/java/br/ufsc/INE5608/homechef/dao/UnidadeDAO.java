@@ -13,4 +13,6 @@ public interface UnidadeDAO {
     Unidade findById(Integer idUnidade);
 
     Unidade update(Unidade unidade);
+
+    Unidade findByName(String nomeUnidade);
 }
