@@ -81,9 +81,9 @@
                 <configuration>
                     <jdbc>
                         <driver>org.postgresql.Driver</driver>
-                        <url>jdbc:postgresql://localhost:5433/ine5608</url>
+                        <url>jdbc:postgresql://localhost:5432/ine5608</url>
                         <user>postgres</user>
-                        <password>admin</password>
+                        <password>1234</password>
                     </jdbc>
                     <generator>
                         <name>org.jooq.util.JavaGenerator</name>
