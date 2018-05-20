@@ -12,5 +12,7 @@ public interface UnidadeService {
 
     Unidade findById(Integer idUnidade);
 
+    Unidade findByName(String nomeUnidade);
+
     Unidade update(Unidade unidade);
 }
