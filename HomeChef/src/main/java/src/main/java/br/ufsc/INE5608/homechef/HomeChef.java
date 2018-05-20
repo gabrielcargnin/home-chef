@@ -5,7 +5,7 @@
  */
 package src.main.java.br.ufsc.INE5608.homechef;
 
-import src.main.java.br.ufsc.INE5608.homechef.view.ListarIngredientes;
+import src.main.java.br.ufsc.INE5608.homechef.controller.ControladorIngrediente;
 
 /**
  * @author Gabriel
@@ -16,6 +16,7 @@ public class HomeChef {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        new ListarIngredientes().setVisible(true);
+        ControladorIngrediente.getInstance().abreListaIngredientes();
+
     }
 }

@@ -31,6 +31,11 @@ public class UnidadeServiceImpl implements UnidadeService {
     }
 
     @Override
+    public Unidade findByName(String nomeUnidade) {
+        return unidadeDAO.findByName(nomeUnidade);
+    }
+
+    @Override
     public Unidade update(Unidade unidade) {
         return unidadeDAO.update(unidade);
     }

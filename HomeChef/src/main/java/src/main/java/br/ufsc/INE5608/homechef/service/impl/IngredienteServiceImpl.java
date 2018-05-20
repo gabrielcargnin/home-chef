@@ -28,6 +28,7 @@ public class IngredienteServiceImpl implements IngredienteService {
     public Collection<Ingrediente> list() {
         Collection<Ingrediente> ingredientes = ingredienteDAO.list();
         ingredientes.forEach(ingrediente -> ingrediente.setUnidade(unidadeDAO.findById(ingrediente.getUnidade().getIdUnidade())));
+        ingredientes.forEach(ingrediente -> ingrediente.setUnidadePreco(unidadeDAO.findById(ingrediente.getUnidadePreco().getIdUnidade())));
         return ingredientes;
     }
 
@@ -41,5 +42,10 @@ public class IngredienteServiceImpl implements IngredienteService {
     @Override
     public Ingrediente update(Ingrediente ingrediente) {
         return ingredienteDAO.update(ingrediente);
+    }
+
+    @Override
+    public void delete(Integer idIngrediente) {
+        ingredienteDAO.delete(idIngrediente);
     }
 }

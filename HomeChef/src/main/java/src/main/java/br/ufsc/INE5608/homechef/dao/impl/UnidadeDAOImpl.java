@@ -78,4 +78,13 @@ public class UnidadeDAOImpl implements UnidadeDAO {
                 .fetchOne()
                 .into(Unidade.class);
     }
+
+    @Override
+    public Unidade findByName(String nomeUnidade) {
+        return dslContext
+                .selectFrom(EN_UNIDADE)
+                .where(EN_UNIDADE.NOME_SINGULAR.eq(nomeUnidade))
+                .fetchOne()
+                .into(Unidade.class);
+    }
 }

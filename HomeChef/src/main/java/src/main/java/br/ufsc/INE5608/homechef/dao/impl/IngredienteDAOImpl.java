@@ -8,6 +8,7 @@ import src.main.java.br.ufsc.INE5608.homechef.connection.Connection;
 import src.main.java.br.ufsc.INE5608.homechef.dao.IngredienteDAO;
 import src.main.java.br.ufsc.INE5608.homechef.model.Ingrediente;
 
+import java.math.BigDecimal;
 import java.util.Collection;
 
 import static br.ufsc.INE5608.homechef.Tables.*;
@@ -33,12 +34,16 @@ public class IngredienteDAOImpl implements IngredienteDAO {
                 .insertInto(EN_INGREDIENTE)
                 .columns(
                         EN_INGREDIENTE.NOME,
-                        EN_INGREDIENTE.PRECO.cast(Double.class),
-                        EN_INGREDIENTE.ID_UNIDADE
+                        EN_INGREDIENTE.PRECO,
+                        EN_INGREDIENTE.ID_UNIDADE,
+                        EN_INGREDIENTE.ID_UNIDADE_PRECO,
+                        EN_INGREDIENTE.QUANTIDADE_PRECO
                 ).values(
                         ingrediente.getNome(),
-                        ingrediente.getPreco(),
-                        ingrediente.getUnidade().getIdUnidade()
+                        BigDecimal.valueOf(ingrediente.getPreco()),
+                        ingrediente.getUnidade().getIdUnidade(),
+                        ingrediente.getUnidadePreco().getIdUnidade(),
+                        ingrediente.getQuantidadePreco()
                 ).returning(EN_INGREDIENTE.ID_INGREDIENTE)
                 .fetchOne()
                 .getValue(EN_INGREDIENTE.ID_INGREDIENTE);
@@ -51,7 +56,7 @@ public class IngredienteDAOImpl implements IngredienteDAO {
         modelMapper.getConfiguration().setDestinationNameTokenizer(NameTokenizers.CAMEL_CASE);
         return dslContext.select()
                 .from(EN_INGREDIENTE)
-                .join(EN_UNIDADE).on(EN_UNIDADE.ID_UNIDADE.eq(EN_INGREDIENTE.ID_INGREDIENTE))
+                .join(EN_UNIDADE).on(EN_UNIDADE.ID_UNIDADE.eq(EN_INGREDIENTE.ID_UNIDADE))
                 .fetch()
                 .map(record -> modelMapper.map(record, Ingrediente.class));
     }
@@ -89,11 +94,18 @@ public class IngredienteDAOImpl implements IngredienteDAO {
         return dslContext
                 .update(EN_INGREDIENTE)
                 .set(EN_INGREDIENTE.NOME, ingrediente.getNome())
-                .set(EN_INGREDIENTE.PRECO.cast(Double.class), ingrediente.getPreco())
+                .set(EN_INGREDIENTE.PRECO, BigDecimal.valueOf(ingrediente.getPreco()))
                 .set(EN_INGREDIENTE.ID_UNIDADE, ingrediente.getUnidade().getIdUnidade())
+                .set(EN_INGREDIENTE.ID_UNIDADE_PRECO, ingrediente.getUnidadePreco().getIdUnidade())
+                .set(EN_INGREDIENTE.QUANTIDADE_PRECO, ingrediente.getQuantidadePreco())
                 .where(EN_INGREDIENTE.ID_INGREDIENTE.eq(ingrediente.getIdIngrediente()))
                 .returning()
                 .fetchOne()
                 .into(Ingrediente.class);
+    }
+
+    @Override
+    public void delete(Integer idIngrediente) {
+        dslContext.deleteFrom(EN_INGREDIENTE).where(EN_INGREDIENTE.ID_INGREDIENTE.eq(idIngrediente)).execute();
     }
 }
