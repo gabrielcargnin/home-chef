@@ -15,12 +15,12 @@ import java.util.Collection;
  *
  * @author Gabriel
  */
-public class ListarIngredientes extends javax.swing.JFrame {
+public class FmListarIngredientes extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrame
      */
-    public ListarIngredientes() {
+    public FmListarIngredientes() {
         initComponents();
     }
 
