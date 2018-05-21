@@ -17,12 +17,12 @@ import java.util.Enumeration;
 /**
  * @author Gabriel
  */
-public class CadastrarIngrediente extends javax.swing.JFrame {
+public class FmCadastrarIngrediente extends javax.swing.JFrame {
 
     /**
      * Creates new form CadastrarIngrediente1
      */
-    public CadastrarIngrediente() {
+    public FmCadastrarIngrediente() {
         initComponents();
     }
 

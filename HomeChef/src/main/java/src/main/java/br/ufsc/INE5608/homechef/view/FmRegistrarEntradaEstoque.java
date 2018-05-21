@@ -9,12 +9,12 @@ package src.main.java.br.ufsc.INE5608.homechef.view;
  *
  * @author Gabriel
  */
-public class RegistrarEntradaEstoque extends javax.swing.JFrame {
+public class FmRegistrarEntradaEstoque extends javax.swing.JFrame {
 
     /**
      * Creates new form RegistrarEntradaEstoque
      */
-    public RegistrarEntradaEstoque() {
+    public FmRegistrarEntradaEstoque() {
         initComponents();
     }
 
